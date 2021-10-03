@@ -1,10 +1,17 @@
-// type Home = {
-//     req: object,
-//     res: object
-// }
+const HomeModel = require('../models/homeModel')
 
-exports.home = (req, res, next) => {
+HomeModel.create({
+    title: 'Tarefa de matemática',
+    description: 'Resolver as questão da Lista 2 de matemática'
+})
+.then(res => console.log(res))
+.catch(e=> console.log(e))
 
+exports.home = (req, res) => {
     res.render('index.ejs')
-    next()
+}
+
+exports.homePost = (req, res) => {
+    const body = req.body
+    res.send('Foi')
 }
